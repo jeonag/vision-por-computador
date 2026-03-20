@@ -69,13 +69,11 @@ if archivo_subido is not None:
                 st.error("❌ No se pudo procesar la imagen")
                 st.stop()
 
-            # Preprocesamiento
+            # Redimensionamos estrictamente a 224x224 píxeles
             img = cv2.resize(img, (224, 224))
-            img = img / 255.0  # Normalización
-            img_input = np.expand_dims(img, axis=0)
-
-            # Predicción
-            pred = modelo.predict(img_input)
+            img = np.expand_dims(img, axis=0)
+            
+            pred = modelo.predict(img)
 
             prob_fondo = float(pred[0][0])
             prob_ivan = float(pred[0][1])
@@ -154,7 +152,7 @@ with st.expander("⚙️ Ver detalles técnicos"):
         st.write(pred)
 
         st.write("### Forma de la entrada")
-        st.write(f"Input shape: {img_input.shape}")
+        st.write(f"Input shape: {img.shape}")
 
     except:
         st.info("Ejecuta una predicción para ver las métricas")
