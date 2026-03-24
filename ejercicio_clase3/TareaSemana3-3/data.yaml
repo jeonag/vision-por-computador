@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 3
+names: ['Dinosaurio', 'Llaves', 'Pin']
+
+roboflow:
+  workspace: brandons-workspace-dklql
+  project: tareasemana3
+  version: 3
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/brandons-workspace-dklql/tareasemana3/dataset/3
